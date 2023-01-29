@@ -3,20 +3,15 @@ package com.example.cryptoapp.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.cryptoapp.R
-import com.example.cryptoapp.data.network.ApiFactory
-import com.example.cryptoapp.data.network.ApiFactory.BASE_IMAGE_URL
-import com.example.cryptoapp.utils.convertTimestampToTime
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coin_detail.*
 
 class CoinDetailActivity : AppCompatActivity() {
 
-    lateinit var viewModel: CoinViewModel
+    private lateinit var viewModel: CoinViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +27,10 @@ class CoinDetailActivity : AppCompatActivity() {
             tvMaxPrice.text = it.highDay.toString()
             tvMinPrice.text = it.lowDay.toString()
             tvLastMarket.text = it.lastMarket
-            tvLastUpdate.text = convertTimestampToTime(it.lastUpdate)
+            tvLastUpdate.text = it.lastUpdate
             tvFromSymbol.text = it.fromSymbol
             tvToSymbol.text = it.toSymbol
-            Picasso.get().load(BASE_IMAGE_URL + it.imageUrl).into(ivCoin)
+            Picasso.get().load(it.imageUrl).into(ivCoin)
         }
     }
 

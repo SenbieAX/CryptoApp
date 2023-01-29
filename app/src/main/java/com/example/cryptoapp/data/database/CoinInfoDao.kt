@@ -10,7 +10,7 @@ import com.example.cryptoapp.data.database.models.CoinInfoDbModel
 @Dao
 interface CoinInfoDao {
 
-    @Query("SELECT * FROM full_price_list ORDER BY price DESC")
+    @Query("SELECT * FROM full_price_list ORDER BY lastUpdate DESC")
     fun getPriceList(): LiveData<List<CoinInfoDbModel>>
 
     @Query("SELECT * FROM full_price_list WHERE fromSymbol == :fSyn LIMIT 1")
